@@ -1,27 +1,38 @@
 # NgxLivere
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.5.0.
+Add LiveRe to your app instantly!
 
-## Development server
+## Installation
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Install it with npm or yarn
 
-## Code scaffolding
+`$ npm install --save ngx-livere`
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Usage
 
-## Build
+Import `LivereModule` in the root module
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+```
+import { LivereModule } from "ngx-livere";
+@NgModule({
+  imports: [
+    // ...
+    LivereModule.forRoot('livere_uid')
+  ]
+})
+```
+`livere_uid` is registered uid on your LiveRe account.
 
-## Running unit tests
+Then you can use component
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```
+@Component({
+  selector: 'app-yoshi',
+  template: `<livere [refer]="url"></livere>`
+})
+export class YoshiComponent {
+  pageId = '/yoshi';
+}
+```
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Livere component requires the `refer` input to work properly.
