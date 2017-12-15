@@ -1,4 +1,4 @@
-# NgxLivere
+# Angular Livere Module
 
 Add LiveRe to your app instantly!
 

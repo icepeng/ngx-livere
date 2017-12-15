@@ -10,7 +10,7 @@ import { LivereModule } from './livere/livere.module';
   imports: [
     BrowserModule,
     CommonModule,
-    LivereModule.forRoot('MTAyMC8zMjQwNS84OTY2'),
+    LivereModule.forRoot('MTAyMC8zMjQxNS84OTc2'),
   ],
   bootstrap: [AppComponent],
 })
