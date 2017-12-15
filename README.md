@@ -2,6 +2,8 @@
 
 Add LiveRe to your app instantly!
 
+<https://livere.com/>
+
 ## Installation
 
 Install it with npm or yarn

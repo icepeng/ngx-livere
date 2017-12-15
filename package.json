@@ -12,6 +12,19 @@
     "e2e": "ng e2e"
   },
   "private": false,
+  "author": {
+    "name": "icepeng"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/icepeng/ngx-livere"
+  },
+  "keywords": [
+    "angular",
+    "livere",
+    "comments",
+    "disqus"
+  ],
   "dependencies": {
     "@angular/animations": "^4.3.0",
     "@angular/common": "^4.3.0",
