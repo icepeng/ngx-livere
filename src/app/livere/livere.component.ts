@@ -15,6 +15,7 @@ import { LivereService } from './livere.service';
 })
 export class LivereComponent implements OnChanges, OnDestroy {
   @Input() refer: string;
+  livereUID: string;
 
   constructor(
     private renderer: Renderer2,
@@ -27,8 +28,7 @@ export class LivereComponent implements OnChanges, OnDestroy {
   }
 
   reloadComment() {
-    const lb = document.getElementById('lvc');
-    lb.innerHTML = `<div id="lv-container" data-id="city" data-uid="${
+    this.el.nativeElement.innerHTML = `<div id="lv-container" data-id="city" data-uid="${
       this.livereService.livereUID
     }"></div>`;
     (window as any).livereOptions = {
@@ -38,12 +38,6 @@ export class LivereComponent implements OnChanges, OnDestroy {
     livereScript.src = 'https://cdn-city.livere.com/js/embed.dist.js';
     livereScript.async = true;
     livereScript.type = 'text/javascript';
-    this.renderer.setAttribute(livereScript, 'data-id', 'city');
-    this.renderer.setAttribute(
-      livereScript,
-      'data-uid',
-      'MTAyMC8zMjQwNS84OTY2',
-    );
     this.renderer.appendChild(this.el.nativeElement, livereScript);
   }
 

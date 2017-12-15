@@ -5,5 +5,9 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
 })
 export class AppComponent {
-  title = 'app';
+  refer = 'test1';
+
+  toggle() {
+    this.refer = this.refer === 'test1' ? 'test2' : 'test1';
+  }
 }
