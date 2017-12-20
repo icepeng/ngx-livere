@@ -1,12 +1,13 @@
+import { DOCUMENT } from '@angular/common';
 import {
   Component,
   ElementRef,
-  OnDestroy,
-  OnChanges,
-  Renderer2,
+  Inject,
   Input,
+  OnChanges,
+  OnDestroy,
 } from '@angular/core';
-import { NavigationEnd, Router } from '@angular/router';
+
 import { LivereService } from './livere.service';
 
 @Component({
@@ -18,9 +19,9 @@ export class LivereComponent implements OnChanges, OnDestroy {
   livereUID: string;
 
   constructor(
-    private renderer: Renderer2,
     private el: ElementRef,
     private livereService: LivereService,
+    @Inject(DOCUMENT) private document: Document,
   ) {}
 
   ngOnChanges() {
@@ -34,14 +35,21 @@ export class LivereComponent implements OnChanges, OnDestroy {
     (window as any).livereOptions = {
       refer: this.refer,
     };
-    const livereScript = this.renderer.createElement('script');
+
+    if (typeof window.LivereTower !== 'undefined') {
+      return window.LivereTower.load(['comment']);
+    }
+
+    const livereScript = this.document.createElement('script');
     livereScript.src = 'https://cdn-city.livere.com/js/embed.dist.js';
     livereScript.async = true;
     livereScript.type = 'text/javascript';
-    this.renderer.appendChild(this.el.nativeElement, livereScript);
+    this.document.getElementsByTagName('head')[0].appendChild(livereScript);
   }
 
   ngOnDestroy() {
     (window as any).livereOptions = undefined;
   }
 }
+
+declare var window: any;
